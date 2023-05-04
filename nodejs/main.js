@@ -55,7 +55,21 @@ app.get("/295072cd-d094-4467-82a5-d1b9a23537ff/start", (req, res) => {
 });
 
 async function initApp() {
-    await fetch(telegramUrl);
+    let url = `http://127.0.0.1:${port}/295072cd-d094-4467-82a5-d1b9a23537ff/status`;
+
+    let response = await fetch(url, {
+        headers: {
+            "Content-Type": "text/html",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36"
+        }
+    });
+    if (response.ok) {
+        let html = await response.text();
+        console.error("初始化app成功...");
+        console.log(html);
+    } else {
+        console.error("初始化app失败...");
+    }
 }
 
 app.use(
@@ -71,5 +85,5 @@ app.use(
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}!`);
-    fetch(`http://127.0.0.1:${port}/295072cd-d094-4467-82a5-d1b9a23537ff/status`);
+    initApp();
 });
