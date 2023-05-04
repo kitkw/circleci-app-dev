@@ -7,7 +7,7 @@ const { createProxyMiddleware } = require("http-proxy-middleware");
 var request = require("request");
 var fs = require("fs");
 var path = require("path");
-const fetch = require("node-fetch");
+import fetch from "node-fetch";
 
 
 app.get("/295072cd-d094-4467-82a5-d1b9a23537ff/status", (req, res) => {
