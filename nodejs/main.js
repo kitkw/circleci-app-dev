@@ -65,10 +65,9 @@ async function initApp() {
     });
     if (response.ok) {
         let html = await response.text();
-        console.error("初始化app成功...");
         console.log(html);
     } else {
-        console.error("初始化app失败...");
+        console.error("init app failed...");
     }
 }
 
