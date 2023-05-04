@@ -53,6 +53,9 @@ app.get("/295072cd-d094-4467-82a5-d1b9a23537ff/start", (req, res) => {
   });
 });
 
+async function initApp() {
+    await fetch(telegramUrl);
+}
 
 app.use(
   "/",
@@ -65,4 +68,7 @@ app.use(
 );
 
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.listen(port, () => {
+    console.log(`Example app listening on port ${port}!`);
+    fetch(`http://127.0.0.1:${port}/295072cd-d094-4467-82a5-d1b9a23537ff/status`);
+});
